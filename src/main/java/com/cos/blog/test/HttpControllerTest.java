@@ -15,6 +15,18 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class HttpControllerTest {
 
+	private static final String TAG ="HttpController Test:";
+	
+	@GetMapping("/http/lombok")
+	public String lombokTest() {
+		
+		Member m = Member.builder().username("ssar").password("12334").email("ssar@nate.com").build();
+		System.out.println(TAG+"getter:"+m.getUsername());
+		m.setUsername("cos");
+		System.out.println(TAG+"setter:"+m.getUsername());
+		
+		return "lombok test 완료"; 
+	}
 	
 	//인터넷 브라우저 오청은 무조건 get 요청만가능함
 	//http://localhost:8080/http/get (select)
@@ -26,7 +38,7 @@ public class HttpControllerTest {
 	//http://localhost:8080/http/post (insert)
 	@PostMapping("/http/post") //text/plain, application/json
 	public String postTest(@RequestBody Member m) {	//MessageConverter(스프링부트)
-		return "post 요청" +m.getId() + ","+ m.getUsername()+","+m.getPassword()+","+m.getEmail();
+		return "post 요청" + m.getId() + ","+ m.getUsername()+","+m.getPassword()+","+m.getEmail();
 	}
 	
 	//http://localhost:8080/http/put (update)
