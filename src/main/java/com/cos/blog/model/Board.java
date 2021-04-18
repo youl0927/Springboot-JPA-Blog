@@ -47,7 +47,7 @@ public class Board {
 	@JoinColumn(name="userId")
 	private User user;	//DB는 오브젝트를 저장 할 수 없다. FK, 자바는 오브젝트를 저장할 수 있다.
 	
-	@OneToMany(mappedBy = "board", fetch = FetchType.LAZY)	//mappedBy 연관관걔의 주인이 아님 (FK가 아님, DB에 컬럼 만들기 금지)
+	@OneToMany(mappedBy = "board", fetch = FetchType.EAGER)	//mappedBy 연관관걔의 주인이 아님 (FK가 아님, DB에 컬럼 만들기 금지)
 	private List<Reply> reply;
 	
 	@CreationTimestamp
