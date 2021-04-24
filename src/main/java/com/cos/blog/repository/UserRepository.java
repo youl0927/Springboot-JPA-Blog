@@ -6,13 +6,13 @@ import org.springframework.stereotype.Repository;
 
 import com.cos.blog.model.User;
 
-
 //DAO
 //자동으로 bean으로 등록이 된다
 //@Repository 생략이 가능하다
 public interface UserRepository  extends JpaRepository<User, Integer>{
 	//JPA Naming 쿼리
-	
+	//select * from user where username=1?
+	java.util.Optional<User>findByUsername(String username);
 
 
 }
